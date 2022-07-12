@@ -2,7 +2,6 @@ from email.quoprimime import quote
 import random
 import os
 import sys
-import requests
 from flask import Flask, after_this_request, render_template, abort, request
 
 # @TODO Import your Ingestor and MemeEngine classes
