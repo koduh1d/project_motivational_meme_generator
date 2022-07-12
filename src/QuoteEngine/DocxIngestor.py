@@ -1,3 +1,5 @@
+"""A docx file ingestor."""
+
 from typing import AnyStr, List
 import docx
 
@@ -6,10 +8,19 @@ from .IngestorInterface import IngestorInterface
 
 
 class DocxIngestor(IngestorInterface):
+    """A docx file ingestor.
+    
+    Ingests docx files using panda.
+    """
+    
     allowed_extensions = ['docx']
     
     @classmethod
     def parse(cls, path: AnyStr) -> List[QuoteModel]:
+        """Parse a file.
+
+        Returns: List of QuoteModel
+        """
         if not cls.can_ingest(path):
             raise Exception('cannot ingest exception')
         

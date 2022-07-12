@@ -1,3 +1,5 @@
+"""A PDF file ingestor."""
+
 import os
 import random
 from typing import AnyStr, List
@@ -8,10 +10,19 @@ from .IngestorInterface import IngestorInterface
 
 
 class PDFIngestor(IngestorInterface):
+    """A pdf file ingestor.
+    
+    Ingests pdf files using panda.
+    """
+    
     allowed_extensions = ['pdf']
     
     @classmethod
     def parse(cls, path: AnyStr) -> List[QuoteModel]:
+        """Parse a file.
+
+        Returns: List of QuoteModel
+        """
         if not cls.can_ingest(path):
             raise Exception('cannot ingest exception')
         

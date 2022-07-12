@@ -39,10 +39,10 @@ class MemeEngine:
         if None not in (text, author):
             draw = ImageDraw.Draw(img)
             quote = '\"' + text + '\" - ' + author
-            font = ImageFont.truetype('arial.ttf', int(width * 0.05))
+            font = ImageFont.truetype('./fonts/arial.ttf', int(width * 0.05))
             x = randint(0, width//3)
             y = randint(0, int(height * 0.75))
-            draw.text((x, y), quote, fill='white', font=font)
+            draw.text((x, y), quote, fill='black', font=font)
         else:
             raise Exception('Incorrect text/author parameter')
         try:

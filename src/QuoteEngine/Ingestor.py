@@ -1,3 +1,5 @@
+"""An Ingestor comparator."""
+
 from typing import AnyStr, List
 from .CSVIngestor import CSVIngestor
 from .DocxIngestor import DocxIngestor
@@ -7,8 +9,17 @@ from .TextIngestor import TextIngestor
 
 
 class Ingestor:
+    """An Ingestor comparator.
+    
+    Contains one static parse method.
+    """
+
     @staticmethod
     def parse(path: AnyStr) -> List[QuoteModel]:
+        """Parse a file.
+
+        Returns: List of QuoteModel objects.
+        """
         ext = path.split('.')[-1]
         if ext == 'pdf':
             return PDFIngestor.parse(path)
