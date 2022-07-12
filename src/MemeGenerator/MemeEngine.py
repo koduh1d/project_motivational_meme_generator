@@ -5,6 +5,7 @@ from re import I
 from typing import AnyStr
 from PIL import Image, ImageDraw, ImageFont
 import os
+import sys
 
 
 class MemeEngine:
@@ -39,7 +40,8 @@ class MemeEngine:
         if None not in (text, author):
             draw = ImageDraw.Draw(img)
             quote = '\"' + text + '\" - ' + author
-            font = ImageFont.truetype('./fonts/arial.ttf', int(width * 0.05))
+            font_path = os.path.join(sys.path[0], "arial.ttf")
+            font = ImageFont.truetype(font_path, int(width * 0.05))
             x = randint(0, width//3)
             y = randint(0, int(height * 0.75))
             draw.text((x, y), quote, fill='black', font=font)
