@@ -10,7 +10,7 @@ from .TextIngestor import TextIngestor
 
 class Ingestor:
     """An Ingestor comparator.
-    
+
     Contains one static parse method.
     """
 
