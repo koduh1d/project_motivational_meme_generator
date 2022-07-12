@@ -27,7 +27,7 @@ class MemeEngine:
             ) -> AnyStr:
         """Create a meme.
 
-        Returns: saved location
+        Returns: Saved location of meme.
         """
         img = Image.open(img_path)
         height = None
@@ -40,9 +40,7 @@ class MemeEngine:
         if None not in (text, author):
             draw = ImageDraw.Draw(img)
             quote = '\"' + text + '\" - ' + author
-            font_path = os.path.join(sys.path[0], "arial.ttf")
-            print(font_path)
-            font = ImageFont.truetype(font_path, int(width * 0.05))
+            font = ImageFont.truetype('./MemeGenerator/fonts/arial.ttf', int(width * 0.05))
             x = randint(0, width//3)
             y = randint(0, int(height * 0.75))
             draw.text((x, y), quote, fill='black', font=font)
