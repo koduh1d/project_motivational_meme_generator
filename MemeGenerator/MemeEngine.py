@@ -6,7 +6,6 @@ import textwrap
 from typing import AnyStr
 from PIL import Image, ImageDraw, ImageFont
 import os
-import sys
 
 
 class MemeEngine:

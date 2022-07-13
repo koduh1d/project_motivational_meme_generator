@@ -5,6 +5,7 @@ import os
 from flask import Flask, after_this_request, render_template, abort, request
 from MemeGenerator import MemeEngine
 from QuoteEngine import Ingestor
+import requests
 
 app = Flask(__name__)
 
@@ -60,6 +61,10 @@ def meme_post():
     def remove_file(response):
         os.remove(path)
         return response
+    img_data = requests.get(image_url, allow_redirects=True)
+    tmp = f'./static/{random.randint(0, 10000)}.png'
+    with open(tmp, "wb") as f:
+        f.write(img_data.content)
     return render_template('meme.html', path=path)
 
 
