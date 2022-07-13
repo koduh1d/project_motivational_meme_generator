@@ -2,6 +2,7 @@
 
 from random import randint
 from re import I
+import textwrap
 from typing import AnyStr
 from PIL import Image, ImageDraw, ImageFont
 import os
@@ -39,11 +40,17 @@ class MemeEngine:
             raise Exception('Incorrect width parameter')
         if None not in (text, author):
             draw = ImageDraw.Draw(img)
-            quote = '\"' + text + '\" - ' + author
-            font = ImageFont.truetype('./MemeGenerator/fonts/arial.ttf', int(width * 0.05))
-            x = randint(0, width//3)
+            font = ImageFont.truetype(
+                    './MemeGenerator/fonts/arial.ttf',
+                    int(width * 0.05)
+                )
+            x = randint(0, width//2)
             y = randint(0, int(height * 0.75))
-            draw.text((x, y), quote, fill='black', font=font)
+            quote = '\"' + text + '\" - ' + author
+            quote = textwrap.wrap(quote, width=30)
+            for line in quote:
+                draw.text((x, y), line, fill='white', font=font)
+                y += font.getsize(line)[1]
         else:
             raise Exception('Incorrect text/author parameter')
         try:
